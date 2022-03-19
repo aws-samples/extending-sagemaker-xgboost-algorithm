@@ -22,12 +22,16 @@ echo $version
 token=$(base64 -d <<< $(aws ecr get-authorization-token --registry-ids $base_account --output text --query 'authorizationData[].authorizationToken'))
 echo ${token:4} | docker login --username AWS --password-stdin "${base_account}".dkr.ecr."${base_region}".amazonaws.com
 
-xgboost_path=`docker run -t base_image find / -name "sagemaker_xgboost_container" | tr -d '\r'`
-
 docker pull "${base_image}" 
+
 # tagging so dockerfile can resolve the base image easily
 docker tag "${base_image}" base_image
+
+# obtaining the path to xgboost modules inside the container
+xgboost_path=`docker run -t base_image find / -name "sagemaker_xgboost_container" | tr -d '\r'`
+echo $xgboost_path
 docker build --build-arg  xgboost_path="${xgboost_path}/algorithm_mode" . -t custom_image
+
 
 # now push to private registry
 # first we need to logout from public ecr and login to our private one
