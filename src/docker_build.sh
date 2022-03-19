@@ -30,7 +30,7 @@ docker tag "${base_image}" base_image
 docker build --build-arg  xgboost_path="${xgboost_path}/algorithm_mode" . -t custom_image
 
 # now push to private registry
-# first we need to login
+# first we need to logout from public ecr and login to our private one
 docker logout
 aws ecr get-login-password --region "${region}" | docker login --username AWS --password-stdin "${account}".dkr.ecr."${region}".amazonaws.com
 

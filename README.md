@@ -1,8 +1,8 @@
-## My Project
+## Extending SageMaker XGBoost container
 
-TODO: Fill this README out!
+This repository provides a solution to modify the Amazon SageMaker XGBoost built-in algorithm container directly. 
 
-Be sure to:
+See the `walkthrough.ipyn` notebook for a sample workflow. 
 
 * Change the title in this README
 * Edit your repository description on GitHub
