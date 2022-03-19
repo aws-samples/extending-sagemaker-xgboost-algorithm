@@ -4,9 +4,6 @@ This repository provides a solution to modify the Amazon SageMaker XGBoost built
 
 See the `walkthrough.ipyn` notebook for a sample workflow. 
 
-* Change the title in this README
-* Edit your repository description on GitHub
-
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
