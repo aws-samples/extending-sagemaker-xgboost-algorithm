@@ -19,7 +19,7 @@ version=${BASH_REMATCH[2]}
 echo $algorithm
 echo $version
 # the images are public, but still need an authentication token to access
-token=$(base64 -d <<< $(aws ecr get-authorization-token --registry-ids $base_account --output text --query 'authorizationData[].authorizationToken'))
+token=$(base64 -d <<< $(aws ecr get-authorization-token --region $base_account  --registry-ids $base_account --output text --query 'authorizationData[].authorizationToken'))
 echo ${token:4} | docker login --username AWS --password-stdin "${base_account}".dkr.ecr."${base_region}".amazonaws.com
 
 docker pull "${base_image}" 
